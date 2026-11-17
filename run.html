@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>run.html</title>
+</head>
+
+<body>
+  <p>Lala</p>
+  <canvas id="myCanvas" width="1500" height="900"></canvas>
+  <img id="character" hidden
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4UxGFRkDpSEOxks6JuvpY2KzsdU-gN_79zAbIjrvNl3lcfatV2IlO2Hg:https://illustoon.com/photo/942.png&s=10"
+    width="150" height="200">
+  <img id="obstacle" hidden
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiI6CEEUzjgZBZTV5wzQGBnhqkJIvqKYzE2WjiYrFBreajjouSuBu-6nf-:https://illustoon.com/photo/949.png&s=10"
+    width="90" height="100">
+  <img id="object" hidden
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSKEY1GED_kKSmWGmCnQq2uhy0aKYnwTBt-YZcZMLxvr9uvXTCWa3b5Ug:https://musicsymbols.me/wp-content/uploads/2025/06/Crescendo-Symbol-e1752223349430.webp&s=10"
+    width="600" height="100">
+  <p id="demo"></p>
+</body>
+
+</html>
+<script>
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  var img = document.getElementById("character");
+  var img2 = document.getElementById("obstacle");
+  var img3 = document.getElementById("object");
+  document.addEventListener("keydown", jump);
+  var y = 400
+  var x = 40
+  var x2 = 1000
+  var y2 = 400
+  var x3 = 10
+  var y3 = 0
+  var velocity = -15
+
+  // ctx.drawImage(img, x, y);
+  // ctx.drawImage(img2, x2, y2);
+  // ctx.drawImage(img3, x3, y3);
+  setInterval(update, 1);
+  function jump() {
+    velocity = -9
+  }
+
+  function update() {
+    ctx.clearRect(0, 0, 1500, 2000);
+    y = y + velocity
+    x2 = x2 - 1
+    x3 = x3 - 1
+    velocity = velocity + 0.1
+    ctx.drawImage(img3, x3, y3);
+    ctx.drawImage(img2, x2, y2);
+    ctx.drawImage(img, x, y);
+    if(y > 400){
+      velocity = 0
+      y = 400
+    }
+    
+  }
+</script>

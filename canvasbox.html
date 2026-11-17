@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>bouncingBoxCanvas.html</title>
+  <canvas id="myCanvas" width="2000" height="2000"></canvas>
+</head>
+
+<body>
+  <p>hello</p>
+
+</body>
+
+</html>
+<script>
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  var x = [90, 20, 40, 35, 12, 40, 100, 43, 21, 34]
+  var y = [78, 40, 65, 55, 21, 30, 120, 54, 34, 52]
+  var directionX = [3, 9, 10, 12, 2, 1, 11, 6, 4, 5]
+  var directionY = [7, 10, 5, 8, 2, 6, 8, 3, 9, 4]
+  for (let i = 0; i < 1000; i = i + 1) {
+    x.push(Math.random() * 1000)
+    y.push(Math.random() * 1000)
+    directionX.push(Math.random() * 1000)
+    directionY.push(Math.random() * 1000)
+  }
+  //code should change the box's x and y 
+  //if it hits the wall then the direction should change
+  setInterval(update, 15)
+  function update() {
+    ctx.clearRect(0, 0, 5000, 5000)
+    for (let i = 0; i < 1000; i = i + 1) {
+      ctx.fillRect(x(Math.random() * 1000), y(Math.random() * 1000), 85, 70)
+      x(Math.random() * 1000) = x(Math.random() * 1000) + directionX(Math.random() * 1000)
+      y(Math.random() * 1000) = y(Math.random() * 1000) + directionY(Math.random() * 1000)
+      if (x(Math.random() * 1000) > 798) {
+        directionX(Math.random() * 1000) = -directionX(Math.random() * 1000)
+      }
+      if (x(Math.random() * 1000) < 120) {
+        directionX(Math.random() * 1000) = -directionX(Math.random() * 1000)
+      }
+      if (y(Math.random() * 1000) > 400) {
+        directionY(Math.random() * 1000) = -directionY(Math.random() * 1000)
+      }
+      if (y(Math.random() * 1000) < 0) {
+        directionY(Math.random() * 1000) = -directionY(Math.random() * 1000)
+      }
+    }
+
+
+  }
+</script>
